@@ -1,9 +1,10 @@
-package com.example.item.domain;
+package com.example.shop.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter
+@Getter @Setter @ToString
 public class ItemDTO { //
 
   private String name;

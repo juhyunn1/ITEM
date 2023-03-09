@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.tymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -15,25 +15,12 @@
     <th>수량</th>
   </tr>
 
-  <tr onclick="location.href='item.html'">
-    <td>1</td>
-    <td>상품1</td>
-    <td>20000</td>
-    <td>100</td>
+  <tr th:onclick="|location.href='@{/basic/item/{id}(id=${item.id})}'|" th:each="item : ${items}">
+    <td th:text="${item.id}">1</td>
+    <td th:text="${item.name}">상품1</td>
+    <td th:text="${item.price}">20000</td>
+    <td th:text="${item.qty}">100</td>
   </tr>
-
-  <tr onclick="location.href='item.html'">
-    <td>2</td>
-    <td>상품2</td>
-    <td>20000</td>
-    <td>100</td>
-  </tr>
-
-  <tr onclick="location.href='item.html'">
-    <td>3</td>
-    <td>상품3</td>
-    <td>20000</td>
-    <td>100</td>
   </tr>
 </table>
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.tymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -9,16 +9,18 @@
 
 <div>
   <label for="id">상품 ID</label>
-  <input type="text" name="id" id="id" value="1" readonly/><br>
+  <input type="text" name="id" id="id" th:value="${item.id}" readonly/><br>
   <label for="name">상품명</label>
-  <input type="text" name="name" id="name" value="상품1" readonly/><br>
+  <input type="text" name="name" id="name" th:value="${item.name}" readonly/><br>
   <label for="price">가격</label>
-  <input type="text" name="price" id="price" value="10000" readonly/><br>
+  <input type="text" name="price" id="price" th:value="${item.price}" readonly/><br>
   <label for="qty">수량</label>
-  <input type="text" name="qty" id="qty" value="10" readonly/><br>
+  <input type="text" name="qty" id="qty" th:value="${item.qty}" readonly/><br>
 </div>
 
-<button onclick="location.href='editForm.html'">상품 수정</button>
-<button onclick="location.href='items.html'">상품 목록</button>
+<button type="button" th:onclick="|location.href='@{/basic/edit/{id}(id=${item.id})}'|">상품 수정</button>
+<button type="button" th:onclick="|location.href='@{/basic/items}'|">상품 목록</button>
+
+<h3 th:if="${param.status}" th:text="수정완료"></h3>
 </body>
 </html>

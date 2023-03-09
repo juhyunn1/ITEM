@@ -1,4 +1,4 @@
-package com.example.item.domain;
+package com.example.shop.domain;
 
 import lombok.Getter; // 컴파일할 때 getter 만들어준다
 import lombok.Setter;

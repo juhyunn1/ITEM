@@ -1,7 +1,6 @@
-package com.example.item.repository;
+package com.example.shop.repository;
 
-import com.example.item.domain.Item;
-import com.example.item.domain.ItemDTO;
+import com.example.shop.domain.Item;
 
 import java.util.List;
 import java.util.Optional;

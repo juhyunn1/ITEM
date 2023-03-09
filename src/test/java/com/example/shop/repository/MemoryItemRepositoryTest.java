@@ -1,7 +1,6 @@
-package com.example.item.repository;
+package com.example.shop.repository;
 
-import com.example.item.domain.Item;
-import com.example.item.domain.ItemDTO;
+import com.example.shop.domain.Item;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

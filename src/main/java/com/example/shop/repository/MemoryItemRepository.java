@@ -1,7 +1,6 @@
-package com.example.item.repository;
+package com.example.shop.repository;
 
-import com.example.item.domain.Item;
-import com.example.item.domain.ItemDTO;
+import com.example.shop.domain.Item;
 
 import java.util.*;
 
@@ -36,6 +35,6 @@ public class MemoryItemRepository implements ItemRepository {
     temp.setPrice(item.getPrice());
     temp.setQty(item.getQty());
     
-    map.put(id, item);
+    map.put(id, temp);
   }
 }

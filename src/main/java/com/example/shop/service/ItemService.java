@@ -1,12 +1,14 @@
-package com.example.item.service;
+package com.example.shop.service;
 
-import com.example.item.domain.Item;
-import com.example.item.domain.ItemDTO;
-import com.example.item.repository.ItemRepository;
+import com.example.shop.domain.Item;
+import com.example.shop.domain.ItemDTO;
+import com.example.shop.repository.ItemRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ItemService {
 
   private final ItemRepository itemRepository;
