@@ -7,7 +7,7 @@
 <body>
 <h1>상품 수정</h1>
 
-<form th:action="@{/basic/edit/{id}(id=${item.id})}" method="post">
+<form th:action="@{/item/edit/{id}(id=${item.id})}" method="post">
   <label for="id">상품 ID</label>
   <input type="text" name="id" id="id" th:value="${item.id}" readonly/><br>
   <label for="name">상품명</label>
@@ -17,8 +17,8 @@
   <label for="qty">수량</label>
   <input type="text" name="qty" id="qty" th:value="${item.qty}"/><br>
 
-  <button type="submit" th:onclick="|location.href='@{/basic/item/{id}(id=${item.id})}'|">등록</button> <!-- 등록 후에 상세화면으로 이동 -->
-  <button type="button" th:onclick="|location.href='@{/basic/items}'|">취소</button>
+  <button type="submit" th:onclick="|location.href='@{/item/item/{id}(id=${item.id})}'|">등록</button> <!-- 등록 후에 상세화면으로 이동 -->
+  <button type="button" th:onclick="|location.href='@{/item/items}'|">취소</button>
 </form>
 </body>
 </html>

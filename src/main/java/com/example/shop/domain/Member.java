@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter @Getter
 public class Member {
 
-  @Id
+  @Id // javax.persistence.Id를 선택해야
   @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
   private Long id;
 
@@ -21,7 +21,7 @@ public class Member {
   @Column(name = "login_id", length = 45, nullable = false) // loginId ==> login_id 자동으로 필드 이름 변경
   private String loginId;
 
-  @Column(length = 10, nullable = false)
+  @Column(length = 45, nullable = false)
   private String password;
 
   public Member() {}
@@ -36,8 +36,9 @@ public class Member {
   public String toString() {
     return "Member{" +
         "id=" + id +
-        ", loginId='" + loginId + '\'' +
         ", name='" + name + '\'' +
+        ", loginId='" + loginId + '\'' +
+        ", password='" + password + '\'' +
         '}';
   }
 }

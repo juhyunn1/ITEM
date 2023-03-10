@@ -13,7 +13,7 @@ import java.util.Optional;
 @Controller
 public class MemberController {
 
-  MemberService memberService;
+  private MemberService memberService;
 
   @Autowired
   public MemberController(MemberService memberService) {
@@ -27,26 +27,10 @@ public class MemberController {
   }
 
   @PostMapping("/join")
-  public String join(Member member, RedirectAttributes redirectAttributes) {
+  public String join(@ModelAttribute Member member, RedirectAttributes redirectAttributes) {
     redirectAttributes.addFlashAttribute("message", "회원가입 성공");
     memberService.join(member);
-    return "redirect:/";
+    return "home";
   }
 
-  @GetMapping("/login")
-  public String login(Model model) {
-    model.addAttribute("member", new Member());
-    return "member/login";
-  }
-
-  @PostMapping("/login")
-  public String login(Member member, Model model, RedirectAttributes redirectAttributes) {
-    if(memberService.login(member)) {
-      return "redirect:/items";
-    } else {
-      redirectAttributes.addFlashAttribute("message", "로그인 실패");
-      return "redirect:/";
-    }
-
-  }
 }

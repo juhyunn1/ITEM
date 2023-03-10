@@ -6,14 +6,14 @@
 </head>
 <body>
 <div><h1>로그인</h1></div>
-<form action="/login" th:object="${member}" method="post">
+<form th:action method="post"> <!-- action이 비워져 있으면 get으로 들어온 url과 동일하게 post로 그대로 가지고 간다 -->
   <div>
     <label for="loginId">로그인ID</label>
-    <input type="text" id="loginId" th:field="*{loginId}" placeholder="아이디를 입력해주세요"></input>
+    <input type="text" id="loginId" name="loginId" placeholder="아이디를 입력해주세요"></input>
   </div>
   <div>
     <label for="password">비밀번호</label>
-    <input type="password" id="password" th:field="*{password}" placeholder="암호를 입력해주세요"></input>
+    <input type="password" id="password" name="password" placeholder="암호를 입력해주세요"></input>
   </div>
   <div>
     <button type="submit">로그인</button>

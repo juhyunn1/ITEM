@@ -39,13 +39,14 @@ public class MemberService {
     return memberRepository.findByLoginId(loginId);
   }
 
-  public boolean login(Member member) {
-    AtomicBoolean result = new AtomicBoolean(false);
-    findMemberByLoginId(member.getLoginId()).ifPresent(thisMember -> {
-      if (member.getPassword().equals(thisMember.getPassword())) {
-        result.set(true);
-      }
-    });
-    return result.get();
-  }
+  // public boolean login(Member member) {
+  //   System.out.println("MemberService.login : " + member);
+  //   AtomicBoolean result = new AtomicBoolean(false);
+  //   findMemberByLoginId(member.getLoginId()).ifPresent(thisMember -> {
+  //     if (member.getPassword().equals(thisMember.getPassword())) {
+  //       result.set(true);
+  //     }
+  //   });
+  //   return result.get();
+  // }
 }

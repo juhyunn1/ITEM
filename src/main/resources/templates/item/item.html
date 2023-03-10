@@ -18,9 +18,9 @@
   <input type="text" name="qty" id="qty" th:value="${item.qty}" readonly/><br>
 </div>
 
-<button type="button" th:onclick="|location.href='@{/basic/edit/{id}(id=${item.id})}'|">상품 수정</button>
-<button type="button" th:onclick="|location.href='@{/basic/items}'|">상품 목록</button>
+<button type="button" th:onclick="|location.href='@{/item/edit/{id}(id=${item.id})}'|">상품 수정</button>
+<button type="button" th:onclick="|location.href='@{/item/items}'|">상품 목록</button>
 
-<h3 th:if="${param.status}" th:text="수정완료"></h3>
+<h3 th:if="${param.status}" th:text="'수정 완료'"></h3>
 </body>
 </html>

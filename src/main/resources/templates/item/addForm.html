@@ -7,7 +7,7 @@
 <body>
 <h1>상품 등록</h1>
 
-<form th:action="@{/basic/add}" method="post">
+<form th:action="@{/add}" method="post">
   <label for="name">상품명</label>
   <input type="text" name="name" id="name" placeholder="상품명을 입력해주세요."/><br>
   <label for="price">가격</label>
@@ -16,7 +16,7 @@
   <input type="text" name="qty" id="qty" placeholder="수량을 입력해주세요."/><br>
 
   <button type="submit">등록</button>
-  <button type="button" th:onclick="|location.href='@{/basic/items}'|">취소</button>
+  <button type="button" th:onclick="|location.href='@{/item/items}'|">취소</button>
 </form>
 </body>
 </html>

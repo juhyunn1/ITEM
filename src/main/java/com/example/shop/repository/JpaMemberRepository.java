@@ -17,7 +17,8 @@ public class JpaMemberRepository implements MemberRepository {
 
   @Override
   public Member save(Member member) {
-    entityManager.persist(member);
+    System.out.println("JpaMemberRepository.findByLoginId : " + member);
+    entityManager.persist(member); // id는 자동으로 들어감 << auto increment
     return member;
   }
 
@@ -35,6 +36,7 @@ public class JpaMemberRepository implements MemberRepository {
         .filter(m -> m.getLoginId().equals(LoginId))
         .findAny();
 
+    System.out.println("JpaMemberRepository.findByLoginId : " + temp);
     return temp;
   }
 

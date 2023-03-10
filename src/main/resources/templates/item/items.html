@@ -15,7 +15,7 @@
     <th>수량</th>
   </tr>
 
-  <tr th:onclick="|location.href='@{/basic/item/{id}(id=${item.id})}'|" th:each="item : ${items}">
+  <tr th:onclick="|location.href='@{/item/item/{id}(id=${item.id})}'|" th:each="item : ${items}">
     <td th:text="${item.id}">1</td>
     <td th:text="${item.name}">상품1</td>
     <td th:text="${item.price}">20000</td>
