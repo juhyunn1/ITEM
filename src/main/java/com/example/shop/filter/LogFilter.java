@@ -18,8 +18,8 @@ public class LogFilter implements Filter {
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
     HttpServletRequest httpServletRequest = (HttpServletRequest) request; // 다운캐스팅
-    String requestURI = httpServletRequest.getRequestURI(); // 유효한 식별자 생성
-    String uuid = UUID.randomUUID().toString();
+    String requestURI = httpServletRequest.getRequestURI();
+    String uuid = UUID.randomUUID().toString(); // 유효한 식별자 생성
 
     try {
       log.info("로그 필터 시작 requestURI : {}, uuid : {}", requestURI, uuid);

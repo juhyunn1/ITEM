@@ -26,19 +26,19 @@ public class LoginCheckFilter implements Filter {
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
     HttpServletRequest httpServletRequest = (HttpServletRequest) request; // 다운캐스팅
     HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-    String requestURI = httpServletRequest.getRequestURI(); // 주소에서 path부분 가져온다
+    String requestPath = httpServletRequest.getRequestURI(); // 주소에서 path부분 가져온다
     String uuid = UUID.randomUUID().toString(); // 유효한 식별자 생성 << HTTP 요청을 구분
 
     try {
-      log.info("로그인 인증 필터 시작 requestURI : {}, uuid : {}", requestURI, uuid);
+      log.info("로그인 인증 필터 시작 requestPath : {}, uuid : {}", requestPath, uuid);
 
-      if(!PatternMatchUtils.simpleMatch(whitelist, requestURI)) { // 화이트리스트에 없으면
+      if(!PatternMatchUtils.simpleMatch(whitelist, requestPath)) { // 화이트리스트에 없으면
         HttpSession session = httpServletRequest.getSession();
         
         if(session == null || session.getAttribute(SessionConst.NAME) == null) { // 세션이 없거나 가져온 세션에 정보가 없으면
-          log.info("미인증 사용자의 요청 {} ", requestURI);
-          httpServletResponse.sendRedirect("/login?redirectURI="+requestURI); // 정보를 파라미티로 가진 주소로 이동
-          return; // 미인증 사용자 나보내기
+          log.info("미인증 사용자의 요청 {} ", requestPath);
+          httpServletResponse.sendRedirect("/login?requestPath="+requestPath); // 정보를 파라미티로 가진 주소로 이동
+          return; // 미인증 사용자 내보내기
         }
       }
 
@@ -46,7 +46,7 @@ public class LoginCheckFilter implements Filter {
     } catch (IOException e) {
       throw e;
     } finally { // 항상 수행
-      log.info("로그인 인증 필터 종료 requestURI : {}, uuid : {}", requestURI, uuid);
+      log.info("로그인 인증 필터 종료 requestPath : {}, uuid : {}", requestPath, uuid);
     }
   }
 

@@ -4,20 +4,16 @@ import com.example.shop.controller.session.MemberOnSession;
 import com.example.shop.controller.session.SessionConst;
 import com.example.shop.domain.Member;
 import com.example.shop.service.MemberService;
-import jdk.jfr.Frequency;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
@@ -72,12 +68,13 @@ public class LoginController {
       @ModelAttribute Member member, // form에서 받아온 필드만 member에 매핑, form에 없는 필드는 null
       RedirectAttributes redirectAttributes,
       HttpServletRequest request,
-      @RequestParam(defaultValue = "/") String redirectPath
+      @RequestParam(defaultValue = "/") String requestPath
   ) {
     String loginId = member.getLoginId();
     Optional<Member> temp = memberService.findMemberByLoginId(loginId);// member 가 존재해야, member.password == 화면에서 입력한 password 랑 일치해야
     System.out.println("LoginController : " + member);
     System.out.println("LoginController : " + temp);
+    System.out.println(requestPath);
 
     // false && false >> false  두번째 조건식은 pass
     // false && true >> false   두번째 조건식은 pass
@@ -95,7 +92,7 @@ public class LoginController {
       HttpSession session = request.getSession(true); // 기존에 세션이 있으면 반환, 없으면 새로 만든다
       session.setAttribute(SessionConst.NAME, memberOnSession); // loginMember라는 이름으로 memberOnSession을 session에 추가
 
-      return "redirect:" + redirectPath;
+      return "redirect:" + requestPath; // 특정 화면에서 넘어온 경우 로그인 성공하면 해당 요청으로
     }
     else {
       redirectAttributes.addFlashAttribute("message", "로그인 실패");

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @Service
 @Transactional(readOnly = true) // reaadOnly가 true이면 c, u, d가 안됨 >> c, u, d가 필요한 곳에서는 별도로 @Transactional 해주어야
