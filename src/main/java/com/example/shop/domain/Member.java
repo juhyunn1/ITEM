@@ -17,7 +17,7 @@ public class Member {
   @Column(length = 10, nullable = false)
   private String name;
 
-  @Column(name = "login_id", length = 45, nullable = false) // loginId ==> login_id 자동으로 필드 이름 변경
+  @Column(name = "login_id", length = 45, nullable = false) // loginId >> login_id 자동으로 필드 이름 변경
   private String loginId;
 
   @Column(length = 45, nullable = false)
