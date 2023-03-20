@@ -1,6 +1,7 @@
 package com.example.shop.repository;
 
 import com.example.shop.domain.Member;
+import com.example.shop.domainDto.MemberRequestDtoForEdit;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
@@ -52,5 +53,19 @@ public class JpaMemberRepository implements MemberRepository {
   @Override
   public void update(Long id, Member member) {
 
+  }
+
+  @Override
+  public void update2(MemberRequestDtoForEdit memberRequestDtoForEdit) {
+    Member temp = findByLoginId(memberRequestDtoForEdit.getLoginId()).get();
+    temp.setPassword(memberRequestDtoForEdit.getPassword());
+  }
+
+  @Override
+  public Long remove(Long id) {
+    Member temp = findById(id).get();
+    entityManager.remove(temp);
+
+    return id;
   }
 }

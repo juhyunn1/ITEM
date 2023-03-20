@@ -5,18 +5,18 @@
   <title>Title</title>
 </head>
 <body>
-<h1>상품 등록</h1>
+<h1 th:text="#{page.addItem}">상품 등록</h1> <!-- messages.properties와 연동하려면 # 사용 -->
 
 <form th:action="@{/add}" method="post">
-  <label for="name">상품명</label>
+  <label for="name" th:text="#{label.item.name}">상품명</label>
   <input type="text" name="name" id="name" placeholder="상품명을 입력해주세요."/><br>
-  <label for="price">가격</label>
+  <label for="price" th:text="#{label.item.price}">가격</label>
   <input type="text" name="price" id="price" placeholder="가격을 입력해주세요."/><br>
-  <label for="qty">수량</label>
+  <label for="qty" th:text="#{label.item.qty}">수량</label>
   <input type="text" name="qty" id="qty" placeholder="수량을 입력해주세요."/><br>
 
-  <button type="submit">등록</button>
-  <button type="button" th:onclick="|location.href='@{/item/items}'|">취소</button>
+  <button type="submit" th:text="#{button.save}">등록</button>
+  <button type="button" th:onclick="|location.href='@{/item/items}'|" th:text="#{button.cancel}">취소</button>
 </form>
 </body>
 </html>

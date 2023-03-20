@@ -1,7 +1,7 @@
 package com.example.shop.service;
 
 import com.example.shop.domain.Item;
-import com.example.shop.domain.ItemDTO;
+import com.example.shop.domainDto.ItemDto;
 import com.example.shop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class ItemService {
   // }
 
   @Transactional(readOnly = false) // @Transactional이 붙은 경우에만 예외 발생 시 롤백이 수행된다
-  public Long addItem(ItemDTO itemDTO) {
+  public Long addItem(ItemDto itemDTO) {
     Item item = new Item(itemDTO.getName(), itemDTO.getPrice(), itemDTO.getQty());
     return itemRepository.save(item).getId();
   }
@@ -36,7 +36,7 @@ public class ItemService {
   }
 
   @Transactional(readOnly = false)
-  public void updateItem(Long id, ItemDTO itemDTO) { //
+  public void updateItem(Long id, ItemDto itemDTO) { //
     Item item = new Item(id, itemDTO.getName(), itemDTO.getPrice(), itemDTO.getQty()); // 여기서(save() 쓰기 전) item.id 부여
     itemRepository.save(item);
   }

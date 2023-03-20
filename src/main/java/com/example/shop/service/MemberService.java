@@ -1,11 +1,13 @@
 package com.example.shop.service;
 
 import com.example.shop.domain.Member;
+import com.example.shop.domainDto.MemberRequestDtoForEdit;
 import com.example.shop.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,6 +38,22 @@ public class MemberService {
 
   public Optional<Member> findMemberByLoginId(String loginId) {
     return memberRepository.findByLoginId(loginId);
+  }
+
+  public List<Member> findMembers() {
+    return memberRepository.findAll();
+  }
+
+  @Transactional
+  public void updateMember(MemberRequestDtoForEdit memberRequestDtoForEdit) {
+    memberRepository.update2(memberRequestDtoForEdit);
+  }
+
+  @Transactional
+  public Long deleteMember(Long id) {
+    memberRepository.remove(id);
+
+    return id;
   }
 
   // public boolean login(Member member) {

@@ -8,6 +8,8 @@
 <h1 th:text="|${member.name}님의 화면|"></h1>
 <div>
   <button type="button" th:onclick="|location.href='@{/item/items}'|">상품 목록</button>
+  <button type="button" th:onclick="|location.href='@{/order/add}'|">상품 주문 등록</button>
+  <button type="button" th:onclick="|location.href='@{/order/orders}'|">주문 내역</button>
   <form action="/logout" method="post" style="display: inline-block">
     <button type="submit">로그아웃</button>
   </form>

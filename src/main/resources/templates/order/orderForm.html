@@ -12,14 +12,19 @@
     <input type="text" id="member" name="name" th:value="${member.name}" readonly></input>
     <input type="text" name="id" th:value="${member.id}" hidden></input>
   </div>
-  <!--    <div>-->
-  <!--        <label for="price">금액</label>-->
-  <!--        <input type="text" id="price" name="price" placeholder="상품의 판매금액을 입력해주세요"></input>-->
-  <!--    </div>-->
-  <!--    <div>-->
-  <!--        <label for="quantity">수량</label>-->
-  <!--        <input type="text" id="quantity" name="quantity" placeholder="상품의 수량을 입력해주세요"></input>-->
-  <!--    </div>-->
+  <div>
+    <label for="item">상품명</label>
+    <select id="item" name="itemId">
+      <option value="">상품선택</option>
+      <option th:each="item : ${items}"
+              th:value="${item.id}"
+              th:text="${item.name}"/>
+    </select>
+  </div>
+  <div>
+    <label for="orderQty">주문수량</label>
+    <input id="orderQty" name="orderQty" placeholder="수량을 입력해주세요" >
+  </div>
   <div>
     <button type="submit">주문등록</button>
     <!--        <button type="button" th:onclick="|location.href='@{/order/cancel}'|">취소</button>-->

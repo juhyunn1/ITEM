@@ -5,20 +5,20 @@
   <title>Title</title>
 </head>
 <body>
-<h1>상품 수정</h1>
+<h1 th:text="#{page.updateItem(${item.name})}">상품 수정</h1>
 
-<form th:action="@{/item/edit/{id}(id=${item.id})}" method="post">
-  <label for="id">상품 ID</label>
+<form th:action="@{/edit/{id}(id=${item.id})}" method="post">
+  <label for="id" th:text="#{label.item.id}">상품 ID</label>
   <input type="text" name="id" id="id" th:value="${item.id}" readonly/><br>
-  <label for="name">상품명</label>
+  <label for="name" th:text="#{label.item.name}">상품명</label>
   <input type="text" name="name" id="name" th:value="${item.name}"/><br>
-  <label for="price">가격</label>
+  <label for="price" th:text="#{label.item.price}">가격</label>
   <input type="text" name="price" id="price" th:value="${item.price}"/><br>
-  <label for="qty">수량</label>
+  <label for="qty" th:text="#{label.item.qty}">수량</label>
   <input type="text" name="qty" id="qty" th:value="${item.qty}"/><br>
 
-  <button type="submit" th:onclick="|location.href='@{/item/item/{id}(id=${item.id})}'|">등록</button> <!-- 등록 후에 상세화면으로 이동 -->
-  <button type="button" th:onclick="|location.href='@{/item/items}'|">취소</button>
+  <button type="submit" th:onclick="|location.href='@{/item/{id}(id=${item.id})}'|" th:text="#{button.save}">등록</button> <!-- 등록 후에 상세화면으로 이동 -->
+  <button type="button" th:onclick="|location.href='@{/items}'|" th:text="#{button.cancel}">취소</button>
 </form>
 </body>
 </html>

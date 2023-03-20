@@ -1,5 +1,6 @@
 package com.example.shop.domain;
 
+import com.example.shop.exception.NotEnoughStockException;
 import lombok.*;
 
 import javax.persistence.*;
@@ -39,4 +40,23 @@ public class Item {
   // public String toString() {
   //   return "Item [id=" + id + ", name=" + name + ", price=" + price + "]";
   // }
+
+  /**
+   * 주문한 수량만큼 재고수량을 감소
+   * @param orderQty
+   */
+  public void removeStock(int orderQty){
+    if(this.qty - orderQty < 0){
+      throw new NotEnoughStockException("재고 수량이 부족합니다.");
+    }
+    this.qty -= orderQty;
+  }
+
+  /**
+   * 취소한 수량만큼 재고수량이 증가
+   * @param orderCancelQty
+   */
+  public void addStock(int orderCancelQty){
+    this.qty += orderCancelQty;
+  }
 }

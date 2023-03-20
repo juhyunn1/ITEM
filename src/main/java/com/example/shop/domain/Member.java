@@ -5,7 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
+@Entity // JPA가 클래스 객체를 RDB에 매핑한다
 @Table
 @Setter @Getter
 public class Member {
@@ -14,7 +14,7 @@ public class Member {
   @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
   private Long id;
 
-  @Column(length = 10, nullable = false)
+  @Column(length = 10, nullable = false) // DB에 저장할 때 null 체크
   private String name;
 
   @Column(name = "login_id", length = 45, nullable = false) // loginId >> login_id 자동으로 필드 이름 변경

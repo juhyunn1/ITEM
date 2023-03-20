@@ -37,17 +37,17 @@ public class WebConfig implements WebMvcConfigurer {
     return filterRegistrationBean;
   }
 
-  @Override
-  public void addInterceptors(InterceptorRegistry registry) { // 인터셉터 등록, 인터셉터는 Spring Context 안에 있기 때문에 @Bean 불필요
-    registry.addInterceptor(new LogInterceptor())
-        .order(1) // 순서 1번으로 설정
-        .addPathPatterns("/**") // 모든 path에 대해서 적용
-        .excludePathPatterns("/", "/error", "/favicon.ico"); // 이건 제외
-
-    registry.addInterceptor(new LoginCheckInterceptor())
-        .order(2) // 순서 2번으로 설정
-        .addPathPatterns("/**")
-        .excludePathPatterns("/", "/login", "/join", "/logout", "/error", "/favicon.ico");
-
-  }
+  // @Override
+  // public void addInterceptors(InterceptorRegistry registry) { // 인터셉터 등록, 인터셉터는 Spring Context 안에 있기 때문에 @Bean 불필요
+  //   registry.addInterceptor(new LogInterceptor())
+  //       .order(1) // 순서 1번으로 설정
+  //       .addPathPatterns("/**") // 모든 path에 대해서 적용
+  //       .excludePathPatterns("/", "/error", "/favicon.ico"); // 이건 제외
+  //
+  //   registry.addInterceptor(new LoginCheckInterceptor())
+  //       .order(2) // 순서 2번으로 설정
+  //       .addPathPatterns("/**")
+  //       .excludePathPatterns("/", "/login", "/join", "/logout", "/error", "/favicon.ico");
+  //
+  // }
 }

@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+    password: 1234
+  messages:
+    basename: messages # default 파일
+    encoding: UTF-8
+
+  jpa:
+    properties:
+      hibernate:
+        show-sql: true # 콘솔에서 jpa가 생성하는 sql 보여준다
+        format_sql: true
+    hibernate:
+      # 프로젝트를 처음 시작할 때 @Entity가 붙어있는 도메인을 이용해서 ddl로 테이블 자동 생성, 처음엔 create, 한 번 실행하고 none으로 바꾸어주어야
+      ddl-auto: none
+#      ddl-auto: create
+
+server:
+  servlet:
+    session:
+      timeout: 60 # session expire 정보 >> 60단위로 입력해야
+      tracking-modes: cookie # 세션 처음 사용 시 주소에 jessionid 포함되는거 해결

@@ -3,6 +3,7 @@ package com.example.shop;
 import com.example.shop.repository.*;
 import com.example.shop.service.ItemService;
 import com.example.shop.service.MemberService;
+import com.example.shop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,11 @@ public class SpringConfig {
     return new JpaMemberRepository(entityManager);
   }
 
+  @Bean
+  public OrderRepository orderRepository() {
+    return new OrderRepository(entityManager);
+  }
+
   // @Bean
   // public ItemService itemService() {
   //   return new ItemService(itemRepository());
@@ -38,4 +44,15 @@ public class SpringConfig {
   // public MemberService memberService() {
   //   return new MemberService(memberRepository());
   // }
+
+
+
+  @Bean
+  public OrderService orderService() {
+    return new OrderService(
+        orderRepository(),
+        memberRepository(),
+        itemRepository()
+    );
+  }
 }
